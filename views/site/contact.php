@@ -41,11 +41,17 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="row">
             <div class="col-lg-5">
 
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
+                <?php $form = ActiveForm::begin([
+                    'id' => 'contact-form',
+                    'options' =>['class' => 'form-horizontal'],
+
+                ]); ?>
 
                     <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
 
-                    <?= $form->field($model, 'email') ?>
+                    <?= $form->field($model, 'email')->textInput([
+                            'template' => '{label}<div class="row"><div class ="col-lg-3">{input}</div>'
+                    ]) ?>
 
                     <?= $form->field($model, 'subject') ?>
 

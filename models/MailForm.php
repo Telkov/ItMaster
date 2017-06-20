@@ -17,11 +17,20 @@ class MailForm extends Model
     public $subject;
     public $message;
 
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Email получателя',
+            'subject' => 'Тема сообщения',
+            'message' => 'Текст сообщения'
+        ];
+    }
 
     public function rules()
     {
     	return [
     		['email', 'required'],
+    		['email', 'email'],
     	];
     }
 }
