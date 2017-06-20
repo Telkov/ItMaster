@@ -7,8 +7,8 @@ use yii\helpers\Html;
 //debug($model);
 ?>
 
-<?php $form = ActiveForm::begin() ?>
-<?= $form->field($model, 'email')->input('email', ['placeholder' => 'Введите email получателя']); ?>
+<?php $form = ActiveForm::begin(['options' => ['class' => 'form-horizontal']]) ?>
+<?= $form->field($model, 'email')->input('email', ['placeholder' => 'Введите email получателя', 'class' => 'form-control']); ?>
 <?= $form->field($model, 'subject')->input('string',['placeholder' => 'Введите тему письма']); ?>
 <?= $form->field($model, 'message')->textarea(['rows' => 5, 'placeholder' => 'Введите текст сообщения']); ?>
 <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>

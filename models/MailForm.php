@@ -16,4 +16,13 @@ class MailForm extends Model
     public $email;
     public $subject;
     public $message;
+
+
+    public function rules()
+    {
+    	return [
+    		['email', 'required'],
+    	];
+    }
 }
+

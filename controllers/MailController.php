@@ -16,6 +16,6 @@ class MailController extends AppController
     {
         $model = new MailForm();
 
-        return $this->render('test', compact('model'));
+        return $this->render('mailform', compact('model'));
     }
 }
