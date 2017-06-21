@@ -18,6 +18,7 @@ class MailController extends AppController
         if ($model->load(Yii::$app->request->post())) {
         	if($model->validate()) {
         		Yii::$app->session->setFlash('succes', 'Данные приняты');
+        		return $this->refresh();
         	} else {
         		Yii::$app->session->setFlash('error', 'Произошла ошибка');
         	}
