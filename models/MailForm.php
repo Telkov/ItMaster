@@ -29,8 +29,10 @@ class MailForm extends Model
     public function rules()
     {
     	return [
-    		['email', 'required'],
+    		['email', 'required', 'message' => 'Поле Email обязательно для заполнения!'],
     		['email', 'email'],
+            ['subject', 'trim'],
+            ['message', 'trim'],
     	];
     }
 }

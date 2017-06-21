@@ -4,6 +4,18 @@ use yii\helpers\Html;
 ?>
 
 <div class="col-lg-10">
+    <?php 
+    if(Yii::$app->session->hasFlash('succes')): 
+    ?>
+    <?= Yii::$app->session->getFlash('succes'); ?>
+    <?php endif; ?>
+
+    <?php 
+    if(Yii::$app->session->hasFlash('error')): 
+    ?>
+    <?= Yii::$app->session->getFlash('error'); ?>
+    <?php endif; ?>
+
     <?php
 //debug($model);
     $form = ActiveForm::begin([
