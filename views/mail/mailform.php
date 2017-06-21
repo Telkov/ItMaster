@@ -3,7 +3,7 @@ use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 ?>
 
-<div class="col-lg-10">
+<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
     <?php 
     if(Yii::$app->session->hasFlash('succes')): 
     ?>
@@ -23,7 +23,7 @@ use yii\helpers\Html;
     <?php endif; ?>
 
     <?php
-//debug($model);
+//debug($mail);
     $form = ActiveForm::begin([
         'id' => 'mail-form',
         'options' => ['class' => 'form-horizontal'],
@@ -41,9 +41,9 @@ use yii\helpers\Html;
         ],
     ]);
     ?>
-    <?= $form->field($model, 'email')->input('email', ['placeholder' => 'Введите email получателя']); ?>
-    <?= $form->field($model, 'subject')->input('string',['placeholder' => 'Введите тему письма']); ?>
-    <?= $form->field($model, 'message')->textarea(['rows' => 7, 'placeholder' => 'Введите текст сообщения']); ?>
+    <?= $form->field($mail, 'recipient')->input('email', ['placeholder' => 'Введите email получателя']); ?>
+    <?= $form->field($mail, 'subject')->input('string',['placeholder' => 'Введите тему письма']); ?>
+    <?= $form->field($mail, 'message')->textarea(['rows' => 7, 'placeholder' => 'Введите текст сообщения']); ?>
     <div class="form-group" align="right">
         <div>
             <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>

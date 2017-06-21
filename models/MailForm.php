@@ -9,18 +9,23 @@
 namespace app\models;
 
 
-use yii\base\Model;
+//use yii\base\Model;
+use yii\db\ActiveRecord;
 
-class MailForm extends Model
+class MailForm extends ActiveRecord
 {
-    public $email;
-    public $subject;
-    public $message;
+     public static function tableName()
+     {
+         return 'Sent';
+     }
+//    public $email;
+//    public $subject;
+//    public $message;
 
     public function attributeLabels()
     {
         return [
-            'email' => 'Email получателя',
+            'recipient' => 'Email получателя',
             'subject' => 'Тема сообщения',
             'message' => 'Текст сообщения'
         ];
@@ -29,8 +34,8 @@ class MailForm extends Model
     public function rules()
     {
     	return [
-    		['email', 'required', 'message' => 'Поле Email обязательно для заполнения!'],
-    		['email', 'email'],
+    		['recipient', 'required', 'message' => 'Поле Email обязательно для заполнения!'],
+    		['recipient', 'email'],
             ['subject', 'trim'],
             ['message', 'trim'],
     	];
