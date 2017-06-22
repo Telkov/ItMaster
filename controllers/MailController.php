@@ -19,6 +19,14 @@ class MailController extends AppController
         $mail->date_dep = date("Y-m-d H:i:s");
         if ($mail->load(Yii::$app->request->post())) {
         	if ($mail->save()) {
+//        	    debug($mail);
+                Yii::$app->mailer->compose()
+//                    ->setFrom(['php.str@ukr.net' => 'ItMAster TEST'])
+                    ->setFrom(['test.mymail.dev@gmail.com' => 'ItMAster TEST'])
+                    ->setTo($mail->recipient)
+                    ->setSubject($mail->subject)
+                    ->setTextBody($mail->message)
+                    ->send();
         		Yii::$app->session->setFlash('succes', 'Письмо отправлено успешно');
         		return $this->refresh();
         	} else {
@@ -27,12 +35,9 @@ class MailController extends AppController
         }
 
         return $this->render('mailform', compact('mail'));
-
-
     }
 
-    
-    
+
     public function actionSent()
     {
 //      $sent = Sent::find()->all(); выборка в объект

@@ -41,19 +41,6 @@ class MailForm extends ActiveRecord
     	];
     }
 
-     public function sending($recipient)
-    {
-        if ($this->validate()) {
-            Yii::$app->mailer->compose()
-                ->setFrom([$this->email => $this->recipient])
-                ->setTo($recipient)
-                ->setSubject($this->subject)
-                ->setTextBody($this->message)
-                ->send();
 
-            return true;
-        }
-        return false;
-    }
 }
 
