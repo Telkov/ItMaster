@@ -9,7 +9,7 @@
 namespace app\controllers;
 use Yii;
 use app\models\MailForm;
-//use app\models\Sent;
+// use app\m odels\Sent;
 
 class MailController extends AppController
 {
@@ -30,11 +30,14 @@ class MailController extends AppController
 
 
     }
+
+    
+    
     public function actionSent()
     {
 //      $sent = Sent::find()->all(); выборка в объект
-        $sent = Sent::find()->asArray()->all(); //выборка в масив
-        $countsent = Sent::find()->asArray()->count(); //выгрузка кол-ва записей
+        $sent = MailForm::find()->asArray()->all(); //выборка в масив
+        $countsent = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
         return $this->render('sent', compact('sent', 'countsent'));
     }
 }
