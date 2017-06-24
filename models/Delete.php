@@ -9,7 +9,18 @@
 namespace app\models;
 
 
-class Delete
-{
+use yii\db\ActiveRecord;
 
+class Delete extends ActiveRecord
+{
+    public static function tableName()
+    {
+        return 'Sent';
+    }
+
+    public function deleteMessages()
+    {
+        $data = json_decode($_POST['jsonObj']);
+        return $data;
+    }
 }

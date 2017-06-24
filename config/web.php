@@ -4,6 +4,7 @@ $params = require(__DIR__ . '/params.php');
 $db = require(__DIR__ . '/db.php');
 
 $config = [
+
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
@@ -28,7 +29,7 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'test.mymail.dev@gmail.com',
+                'username' => 'mailertest.dev@gmail.com',
                 'password' => 'Test123456',
                 'port' => '465',
                 'encryption' => 'ssl',
