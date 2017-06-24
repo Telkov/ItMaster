@@ -8,22 +8,23 @@
 
 namespace app\controllers;
 use app\models\Delete;
+use app\models\Prepare;
 use Yii;
 use app\models\MailForm;
+use yii\web\JsonParser;
 
 // use app\models\Sent;
 
 class MailController extends AppController
 {
-    public function actionIndex()
+    //Функционал отправки письма и добавление новых писем в БД
+    public function actionNew()
     {
         $mail = new MailForm();
         $mail->date_dep = date("Y-m-d H:i:s");
         if ($mail->load(Yii::$app->request->post())) {
         	if ($mail->save()) {
-//        	    debug($mail);
                 Yii::$app->mailer->compose()
-//                    ->setFrom(['php.str@ukr.net' => 'ItMAster TEST'])
                     ->setFrom(['mailertest.dev@gmail.com' => 'ItMAster TEST'])
                     ->setTo($mail->recipient)
                     ->setSubject($mail->subject)
@@ -35,35 +36,50 @@ class MailController extends AppController
         		Yii::$app->session->setFlash('error', 'Произошла ошибка');
         	}
         }
-
         return $this->render('mailform', compact('mail'));
     }
 
-
+    //Выборка писем из БД
     public function actionSent()
     {
-        if (Yii::$app->request->isAjax) {
-            debug($_POST);
-        }
+//        if (Yii::$app->request->isAjax) {
+//            $obj = $_POST['jsonObj'];
+//        }
         //      $sent = Sent::find()->all(); выборка в объект
         $sent = MailForm::find()->asArray()->all(); //выборка в масив
         $countsent = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
         return $this->render('sent', compact('sent', 'countsent'));
 
-//        Yii::$app->response->format = Response::FORMAT_JSON;
-//        $data = json_decode($_POST['jsonObj']);
-//        return $this->render('sent', compact('data'));
-
     }
 
+    //Удаление писем
     public function actionDelete()
     {
-        Yii::$app->response->format = Response::FORMAT_JSON;
-        $data = json_decode($_POST['jsonObj']);
-        return $this->render('sent', compact('data'));
+        if (Yii::$app->request->isAjax) {
+            $obj = $_POST['jsonObj'];
+        }
+//        $newobj = new Prepare();
+//        $newobj = $this->transform();
+        $symbols = array('[', ']','"');
+        $newobj = str_replace($symbols, "", $obj);
+        debug($newobj);
+        $del = new Delete();
+        return $del->deleteMessages();
+
+
+
+
+
+
+
+
+
+
 //        $del = new Delete();
-//        $del->deleteMessages();
-//            return $this->render('sent', compact('data'));
+//        $this->del->deleteMessages();
+////        $del = new Delete();
+////        $del->deleteMessages();
+////            return $this->render('sent', compact('data'));
     }
 
 }

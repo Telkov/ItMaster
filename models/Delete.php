@@ -20,7 +20,9 @@ class Delete extends ActiveRecord
 
     public function deleteMessages()
     {
-        $data = json_decode($_POST['jsonObj']);
-        return $data;
+        $query = "DELETE FROM Sent WHERE id in" . $newobj;
+        return Yii::$app->db
+            ->createCommand($query)
+            ->queryAll();
     }
 }

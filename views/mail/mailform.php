@@ -1,11 +1,21 @@
 <?php
+use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-?>
 
-<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-    <?php 
-    if(Yii::$app->session->hasFlash('succes')): 
+Modal::begin([
+        'header' => '<p style="text-align: center">Новое сообщение</p>',
+        'size' => 'modal-lg',
+'toggleButton' => [
+'label' => 'Написать письмо',
+    'tag' => 'button',
+    'class' => 'btn btn-success',
+],
+]);
+?>
+<div class="container-fluid modal-form">
+    <?php
+    if(Yii::$app->session->hasFlash('succes')):
     ?>
     <div class="alert alert-success alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -13,8 +23,8 @@ use yii\helpers\Html;
     </div>
     <?php endif; ?>
 
-    <?php 
-    if(Yii::$app->session->hasFlash('error')): 
+    <?php
+    if(Yii::$app->session->hasFlash('error')):
     ?>
      <div class="alert alert-danger alert-dismissible" role="alert">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -30,14 +40,14 @@ use yii\helpers\Html;
         'fieldConfig' => [
             'template' => '<div class="form-group">
                                 {label}
-                                <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                                     {input}
                                 </div>
-                                <div class="col-lg-10 col-md-9 col-sm-9 col-xs-9">
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
                                     {error}
                                 </div>
                             </div>',
-            'labelOptions' => ['class' => 'col-lg-2 col-md-3 col-sm-3 col-xs-3 control-label'],
+            'labelOptions' => ['class' => 'col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label'],
         ],
     ]);
     ?>
@@ -52,3 +62,4 @@ use yii\helpers\Html;
 
     <?php ActiveForm::end() ?>
 </div>
+<?php Modal::end()?>

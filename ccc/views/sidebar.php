@@ -6,10 +6,10 @@
 		<div class="mail-sidebar__menu_table">
 			<table cellspacing="0">
 				<tr>
-					<td><a href="">Входящие</a></td><td>счетчик 1</td>
+					<td><a href="">Входящие</a></td><td><?= $countsent ?></td>
 				</tr>
 				<tr>
-					<td><a href="">Отправленные</td><td>счетчик 2</td>
+					<td><a href="">Отправленные</td><td><?= $countinc ?></td>
 				</tr>
 			</table>
 		</div>

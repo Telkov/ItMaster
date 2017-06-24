@@ -15,9 +15,9 @@ $(function() {
         });
 
         var data='jsonObj=' + JSON.stringify(selectedItems);
-        alert(data);
+        // alert(data);
         $.ajax({
-            url: 'index.php?r=post/index',
+            url: 'index.php?r=mail/delete',
                type:'POST',
                data: data,
                 success: function(res) {
@@ -26,23 +26,6 @@ $(function() {
             error:function () {
                 alert('Error!');
             }
-        // });
-
-//         $.ajax({
-//             url: '?r=mail/sent"',
-//             dataType: 'json',
-//             method: 'POST',
-//             data: data,
-//             async: false,
-//             success: function (data) {
-//                 JSON = data;
-//             }
-//         });
-//         return JSON;
-//         // alert(JSON);
-//
-//         // return false;
-//         // alert(selectedItems);
-//     });
-//
+        });
+    });
 });
