@@ -33,20 +33,19 @@ use yii\helpers\Html;
             'options' => ['class' => 'form-horizontal'],
         ]);
 
-//        echo '<div class="form-group">';
-        echo Html::button('Написать письмо', [
-                'class' => 'btn btn-success',
-                'id'=> 'newmsg',
-                'data-toggle' => "modal",
-            ]);
+        echo '<div class="form-group">';
+            echo Html::button('Написать письмо', [
+                    'class' => 'btn btn-success',
+                    'id'=> 'newmsg',
+                    'data-toggle' => "modal",
+                ]);
 
-        echo Html::submitButton('Удалить выбранные',
-            [
-                'class' => 'btn btn-danger',
-                'id'=> 'delbtn',
-            ]);
-
-
+            echo Html::submitButton('Удалить выбранные',
+                [
+                    'class' => 'btn btn-danger',
+                    'id'=> 'delbtn',
+                ]);
+        echo '</div>';
         echo '<table class="table table-striped mail-msglist" style="margin-top: 20px">';
         echo '<tr>';
         echo '<th> <input type="checkbox" name="allmsg" id="check"></th>';

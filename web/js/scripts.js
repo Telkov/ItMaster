@@ -18,13 +18,10 @@ $(function() {
         // alert(data);
         $.ajax({
             url: 'index.php?r=mail/delete',
-               type:'POST',
-               data: data,
-                success: function(res) {
+            type: 'POST',
+            data: data,
+            success: function (res) {
                 console.log(res);
-            },
-            error:function () {
-                alert('Error!');
             }
         });
     });
