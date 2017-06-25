@@ -53,18 +53,18 @@ class MailController extends AppController
     }
 
     //Удаление писем
+
+
     public function actionDelete()
     {
         if (Yii::$app->request->isAjax) {
             $obj = $_POST['jsonObj'];
         }
-//        $newobj = new Prepare();
-//        $newobj = $this->transform();
-        $symbols = array('[', ']','"');
-        $newobj = str_replace($symbols, "", $obj);
+        debug($obj); //прилетает строка
+        $newobj = new Prepare();
+        $newobj->transform($obj);
         debug($newobj);
-        $del = new Delete();
-        return $del->deleteMessages();
+
 
 
 

@@ -1,21 +1,18 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alejandro
- * Date: 25.06.2017
- * Time: 1:36
- */
 
 namespace app\models;
-
 
 use yii\base\Model;
 
 class Prepare extends Model
 {
-    public function transform()
+    public $obj;
+    public $newobj;
+
+    public function transform($obj)
     {
         $symbols = array('[', ']','"');
         $newobj = str_replace($symbols, "", $obj);
+        return $newobj;
     }
 }
