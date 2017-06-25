@@ -3,7 +3,7 @@ namespace app\models;
 
 use yii\db\ActiveRecord;
 
-class Delete extends ActiveRecord
+class DeleteId extends ActiveRecord
 {
     public $id;
     public $query;
@@ -15,10 +15,10 @@ class Delete extends ActiveRecord
 
     public function deleteMsg($id)
     {
-        debug($this->id);
-        $this->query = "DELETE FROM Sent WHERE id in (".$this->id.")";
+        echo 'this ids = ' . $this->id;
+//        $this->query = "DELETE FROM Sent WHERE id in (".$this->id.")";
 //        debug($this->query);
-        return $this->query;
+//        return $this->query;
 //        return Yii::$app->db
 //            ->createCommand($query)
 //            ->queryAll();

@@ -1,12 +1,12 @@
 <?php
 
 namespace app\controllers;
-use app\models\Delete;
+
+use app\models\DeleteId;
 use app\models\Prepare;
-use Yii;
 use app\models\MailForm;
 use yii\web\JsonParser;
-
+use Yii;
 // use app\models\Sent;
 
 class MailController extends AppController
@@ -50,24 +50,11 @@ class MailController extends AppController
         if (Yii::$app->request->isAjax) {
             $obj = $_POST['jsonObj'];
         }
-        $new = new Prepare();
+        $new = new Prepare(); //приведем строковое значение переменной к нужному виду
         $ids = $new->transform($obj);
-        echo $ids;
-
-        $del = new Delete();
-        $q = $del->deleteMsg($ids);
-
-        debug($q);
-//        return \Yii::$app
-//            ->db
-//            ->createCommand()
-//            ->delete('Sent', ['id => $ids'])
-//            ->execute();
-
-
-////        $del = new Delete();
-////        $del->deleteMessages();
-////            return $this->render('sent', compact('data'));
+        $query = "DELETE FROM Sent WHERE id in (".$ids.")"; //создаем запрос на удаление и следом удаляем
+        return Yii::$app->db
+            ->createCommand($query)
+            ->queryAll();
     }
-
 }
