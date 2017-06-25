@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alejandro
- * Date: 19.06.2017
- * Time: 21:42
- */
 
 namespace app\controllers;
 use app\models\Delete;
@@ -17,6 +11,8 @@ use yii\web\JsonParser;
 
 class MailController extends AppController
 {
+    public $obj;
+    public $ids;
     //Функционал отправки письма и добавление новых писем в БД
     public function actionNew()
     {
@@ -42,10 +38,6 @@ class MailController extends AppController
     //Выборка писем из БД
     public function actionSent()
     {
-//        if (Yii::$app->request->isAjax) {
-//            $obj = $_POST['jsonObj'];
-//        }
-        //      $sent = Sent::find()->all(); выборка в объект
         $sent = MailForm::find()->asArray()->all(); //выборка в масив
         $countsent = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
         return $this->render('sent', compact('sent', 'countsent'));
@@ -53,30 +45,26 @@ class MailController extends AppController
     }
 
     //Удаление писем
-
-
     public function actionDelete()
     {
         if (Yii::$app->request->isAjax) {
             $obj = $_POST['jsonObj'];
         }
-        debug($obj); //прилетает строка
-        $newobj = new Prepare();
-        $newobj->transform($obj);
-        debug($newobj);
+        $new = new Prepare();
+        $ids = $new->transform($obj);
+        echo $ids;
+
+        $del = new Delete();
+        $q = $del->deleteMsg($ids);
+
+        debug($q);
+//        return \Yii::$app
+//            ->db
+//            ->createCommand()
+//            ->delete('Sent', ['id => $ids'])
+//            ->execute();
 
 
-
-
-
-
-
-
-
-
-
-//        $del = new Delete();
-//        $this->del->deleteMessages();
 ////        $del = new Delete();
 ////        $del->deleteMessages();
 ////            return $this->render('sent', compact('data'));

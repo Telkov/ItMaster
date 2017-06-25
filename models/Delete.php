@@ -1,31 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alejandro
- * Date: 24.06.2017
- * Time: 0:11
- */
-
 namespace app\models;
-
 
 use yii\db\ActiveRecord;
 
 class Delete extends ActiveRecord
 {
+    public $id;
+    public $query;
+
     public static function tableName()
     {
         return 'Sent';
     }
 
-    public function deleteMessages()
+    public function deleteMsg($id)
     {
-
-
-
-        $query = "DELETE FROM Sent WHERE id in" . $newobj;
+        debug($this->id);
+        $this->query = "DELETE FROM Sent WHERE id in (".$this->id.")";
+//        debug($this->query);
+        return $this->query;
 //        return Yii::$app->db
 //            ->createCommand($query)
 //            ->queryAll();
     }
 }
+
+//$this->query = "DELETE FROM Sent WHERE id in (" . $this->ids . ")";
+//\Yii::$app
+//    ->db
+//    ->createCommand()
+//    ->delete('Sent', ['id => $ids'])
+//    ->execute();
+//}
+//}
