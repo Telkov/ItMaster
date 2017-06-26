@@ -2,7 +2,8 @@
 use yii\bootstrap\Modal;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
-
+?>
+<?php
 Modal::begin([
         'header' => '<p style="text-align: center">Новое сообщение</p>',
         'size' => 'modal-lg',
