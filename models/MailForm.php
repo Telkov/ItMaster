@@ -14,9 +14,9 @@ use yii\db\ActiveRecord;
 
 class MailForm extends ActiveRecord
 {
-    public $recipient;
-    public $subject;
-    public $message;
+//    public $recipient;
+//    public $subject;
+//    public $message;
 
      public static function tableName()
      {

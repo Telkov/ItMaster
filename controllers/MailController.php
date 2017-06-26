@@ -26,7 +26,7 @@ class MailController extends AppController
                     ->setSubject($mail->subject)
                     ->setTextBody($mail->message)
                     ->send();
-        		Yii::$app->session->setFlash('succes', 'Письмо отправлено успешно');
+//        		Yii::$app->session->setFlash('succes', 'Письмо отправлено успешно');
         		return $this->refresh();
         	} else {
         		Yii::$app->session->setFlash('error', 'Произошла ошибка');
