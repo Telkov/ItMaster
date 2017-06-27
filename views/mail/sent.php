@@ -112,7 +112,6 @@ use app\models\Sent;
         echo '</div>';
         echo '<table class="table table-striped mail-msglist" style="margin-top: 20px">';
         echo '<tr>';
-//        echo '<th> <input type="checkbox" name="allmsg" id="check"></th>';
         echo '<th class="check-col">';
         echo '<input type="button" class="btn check-btn" value="+" onclick="check();">&nbsp;';
         echo '<input type="button" class="btn check-btn" value="-" onclick="uncheck();">';

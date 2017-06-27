@@ -42,27 +42,33 @@
     text-align: center;
     padding: 1px;
 }
-.mail-msglist th{
-    background: #ECEDE8;
-}
+
 .mail-msglist{
     border: 2px solid black;
 }
 
 .mail-msglist>tbody>tr>td, .mail-msglist>tbody>tr>th, .mail-msglist>tfoot>tr>td, .mail-msglist>tfoot>tr>th, .mail-msglist>thead>tr>td, .mail-msglist>thead>tr>th {
-    padding: 2px;
+    padding: 1px;
+    vertical-align: middle;
 }
+
+.mail-msglist th{
+    background: #ECEDE8;
+}
+
 #delete-msg-button{
     margin-left: 10px;
 }
+
 #new-msg-button{
    margin-left: 15px;
 }
+
 .modal-body{
     text-align: center;
 }
+
 .modal-content{
-    /*text-align: center;*/
     min-width: 640px;
     max-width: 640px;
 }
@@ -80,5 +86,4 @@
 }
 .check-col{
     width: 50px;
-
 }
