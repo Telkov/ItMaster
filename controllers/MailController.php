@@ -32,15 +32,15 @@ class MailController extends AppController
         		Yii::$app->session->setFlash('error', 'Произошла ошибка');
         	}
         }
-        return $this->render('sent', compact('mail'));
+        return $this->render('mailform', compact('mail'));
     }
 
     //Выборка писем из БД
     public function actionSent()
     {
-        $sent = MailForm::find()->asArray()->all(); //выборка в масив
-        $countsent = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
-        return $this->render('sent', compact('sent', 'countsent'));
+        $sentmsg = MailForm::find()->asArray()->all(); //выборка в масив
+        $countsentmsg = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
+        return $this->render('sent', compact('sentmsg', 'countsentmsg'));
 
     }
 

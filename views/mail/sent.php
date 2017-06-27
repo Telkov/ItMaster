@@ -56,12 +56,12 @@ use yii\bootstrap\Modal;
         echo '<th>Дата отправления</th>';
         echo '</tr>';
 
-        foreach ($sent as $sentmail) {
+        foreach ($sentmsg as $sentmails) {
             echo '<tr>';
-            echo '<td>' . Html::checkbox('cbname'.$sentmail["id"], false, ['id' => $sentmail["id"]]) .'</td>';
-            echo '<td>' . $sentmail["recipient"] . '</td>';
-            echo '<td>' . $sentmail["subject"] . '</td>';
-            echo '<td>' . $sentmail["date_dep"] . '</td>';
+            echo '<td>' . Html::checkbox('cbname'.$sentmails["id"], false, ['id' => $sentmails["id"]]) .'</td>';
+            echo '<td>' . $sentmails["recipient"] . '</td>';
+            echo '<td>' . $sentmails["subject"] . '</td>';
+            echo '<td>' . $sentmails["date_dep"] . '</td>';
             echo '</tr>';
         }
         echo '</table>';
