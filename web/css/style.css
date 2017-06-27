@@ -6,7 +6,6 @@
     margin-top: 29px;
 }
 .mail-sidebar__tab{
-    /*background-image: url("tab.psd");*/
     border-bottom: 25px solid #ECEDE8;
     border-right: 15px solid transparent;
     border-left: 0;
@@ -53,8 +52,11 @@
 .mail-msglist>tbody>tr>td, .mail-msglist>tbody>tr>th, .mail-msglist>tfoot>tr>td, .mail-msglist>tfoot>tr>th, .mail-msglist>thead>tr>td, .mail-msglist>thead>tr>th {
     padding: 2px;
 }
-#delbtn{
+#delete-msg-button{
     margin-left: 10px;
+}
+#new-msg-button{
+   margin-left: 15px;
 }
 .modal-body{
     text-align: center;
@@ -63,5 +65,20 @@
     /*text-align: center;*/
     min-width: 640px;
     max-width: 640px;
+}
+
+.msgs-table{
+    position: absolute;
+    left: 230px;
+    max-width: 80%;
+}
+.check-btn{
+    background-color: #ECEDE8;
+    padding: 0;
+    width: 20px;
+    font-size: 14pt;
+}
+.check-col{
+    width: 50px;
 
 }

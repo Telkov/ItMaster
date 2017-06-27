@@ -1,9 +1,10 @@
 <?php
-
+use app\models\MailForm;
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\bootstrap\Modal;
+use app\models\Sent;
 ?>
 
 <div class="row">
@@ -19,7 +20,7 @@ use yii\bootstrap\Modal;
                             <td><a href="">Входящие</a></td><td>##</td>
                         </tr>
                         <tr>
-                            <td><a href="">Отправленные</td><td><?= $countsent ?></td>
+                            <td><a href="">Отправленные</td><td><?= $countsentmsg ?></td>
                         </tr>
                     </table>
                 </div>
@@ -27,38 +28,103 @@ use yii\bootstrap\Modal;
         </div>
     </div>
 
-    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 msgs-table">
         <?php
         $msg = ActiveForm::begin([
+
             'id' => 'delmsg-form',
-            'options' => ['class' => 'form-horizontal'],
+            'options' => ['class' => 'form-horizontal',  'name' => 'delform', 'method' => 'get'],
         ]);
 
         echo '<div class="form-group">';
-        // $url =  $_SERVER['SERVER_NAME'].Url::toRoute(['mail/new']);
-        // echo $url,'<br>';
-        
         ?>
-           <!-- <a data-toggle="modal" href=".$url." data-target="#myModal">Click me !</a> -->
-            
+
+        <?php
+        Modal::begin([
+            'id' => 'myModal',
+            'header' => '<p style="text-align: center">Новое сообщение</p>',
+            'size' => 'modal-lg',
+            'toggleButton' => [
+                'label' => 'Написать письмо',
+                'tag' => 'button',
+                'class' => 'btn btn-success',
+                'id' => 'new-msg-button'
+            ],
+        ]);
+        ?>
+        <div class="container-fluid modal-form">
             <?php
-            echo Html::submitButton('Удалить выбранные',
-                [
-                    'class' => 'btn btn-danger',
-                    'id'=> 'delbtn',
-                ]);
+            if(Yii::$app->session->hasFlash('succes')):
+                ?>
+                <div class="alert alert-success alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?= Yii::$app->session->getFlash('succes'); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php
+            if(Yii::$app->session->hasFlash('error')):
+                ?>
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <?= Yii::$app->session->getFlash('error'); ?>
+                </div>
+            <?php endif; ?>
+
+<!--            //Модальное окно-->
+            <?php
+            $mform = ActiveForm::begin([
+                'id' => 'mail-form',
+                'options' => ['class' => 'form-horizontal'],
+                'fieldConfig' => [
+                    'template' => '<div class="form-group">
+                                {label}
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    {input}
+                                </div>
+                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                    {error}
+                                </div>
+                            </div>',
+                    'labelOptions' => ['class' => 'col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label'],
+                ],
+            ]);
+            ?>
+            <?= $mform->field($mail, 'recipient')->input('email', ['placeholder' => 'Введите email получателя']); ?>
+            <?= $mform->field($mail, 'subject')->input('string',['placeholder' => 'Введите тему письма']); ?>
+            <?= $mform->field($mail, 'message')->textarea(['rows' => 7, 'placeholder' => 'Введите текст сообщения']); ?>
+            <div class="form-group" align="right">
+                <div>
+                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
+                </div>
+            </div>
+
+            <?php ActiveForm::end() ?>
+        </div>
+        <?php Modal::end()?>
+
+        <?php
+        echo Html::submitButton('Удалить выбранные',
+            [
+                'class' => 'btn btn-danger',
+                'id'=> 'delete-msg-button',
+            ]);
         echo '</div>';
         echo '<table class="table table-striped mail-msglist" style="margin-top: 20px">';
         echo '<tr>';
-        echo '<th> <input type="checkbox" name="allmsg" id="check"></th>';
+//        echo '<th> <input type="checkbox" name="allmsg" id="check"></th>';
+        echo '<th class="check-col">';
+        echo '<input type="button" class="btn check-btn" value="+" onclick="check();">&nbsp;';
+        echo '<input type="button" class="btn check-btn" value="-" onclick="uncheck();">';
+        echo '</th>';
         echo '<th>Получатель</th>';
         echo '<th>Тема письма</th>';
         echo '<th>Дата отправления</th>';
         echo '</tr>';
-
+        $i=1;
         foreach ($sentmsg as $sentmails) {
             echo '<tr>';
-            echo '<td>' . Html::checkbox('cbname'.$sentmails["id"], false, ['id' => $sentmails["id"]]) .'</td>';
+            echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
             echo '<td>' . $sentmails["recipient"] . '</td>';
             echo '<td>' . $sentmails["subject"] . '</td>';
             echo '<td>' . $sentmails["date_dep"] . '</td>';
@@ -68,7 +134,6 @@ use yii\bootstrap\Modal;
 
         ActiveForm::end();
         ?>
-
     </div>
 </div>
 

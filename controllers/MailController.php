@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\DeleteId;
 use app\models\Prepare;
 use app\models\MailForm;
+use app\models\Sent;
 use yii\web\JsonParser;
 use Yii;
 // use app\models\Sent;
@@ -14,34 +15,30 @@ class MailController extends AppController
     public $obj;
     public $ids;
     //Функционал отправки письма и добавление новых писем в БД
-    public function actionNew()
+
+    /**
+     * @return string|\yii\web\Response
+     */
+    public function actionSent()
     {
         $mail = new MailForm();
         $mail->date_dep = date("Y-m-d H:i:s");
         if ($mail->load(Yii::$app->request->post())) {
-        	if ($mail->save()) {
+            if ($mail->save()) {
                 Yii::$app->mailer->compose()
                     ->setFrom(['mailertest.dev@gmail.com' => 'ItMAster TEST'])
                     ->setTo($mail->recipient)
                     ->setSubject($mail->subject)
                     ->setTextBody($mail->message)
                     ->send();
-//        		Yii::$app->session->setFlash('succes', 'Письмо отправлено успешно');
-        		return $this->refresh();
-        	} else {
-        		Yii::$app->session->setFlash('error', 'Произошла ошибка');
-        	}
+                return $this->refresh();
+            } else {
+                Yii::$app->session->setFlash('error', 'Произошла ошибка');
+            }
         }
-        return $this->render('mailform', compact('mail'));
-    }
-
-    //Выборка писем из БД
-    public function actionSent()
-    {
-        $sentmsg = MailForm::find()->asArray()->all(); //выборка в масив
-        $countsentmsg = MailForm::find()->asArray()->count(); //выгрузка кол-ва записей
-        return $this->render('sent', compact('sentmsg', 'countsentmsg'));
-
+        $sentmsg = Sent::find()->asArray()->all(); //выборка в масив
+        $countsentmsg = Sent::find()->asArray()->count(); //выгрузка кол-ва записей
+        return $this->render('sent', ['mail' => $mail, 'sentmsg' => $sentmsg, 'countsentmsg'=> $countsentmsg]);
     }
 
     //Удаление писем

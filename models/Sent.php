@@ -13,5 +13,11 @@ use yii\db\ActiveRecord;
 
 class Sent extends ActiveRecord
 {
+    public $sentmsg;
+    public $sentcountmsg;
 
+    public static function tableName()
+    {
+        return 'Sent';
+    }
 }

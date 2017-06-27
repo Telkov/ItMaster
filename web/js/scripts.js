@@ -1,14 +1,30 @@
-$(function() {
-    $( "#check" ).on( "click", function() {
-        if($(this).is(":checked")) {alert("Вы активировали переключатель");
-        } else {alert("Вы деактивировали переключатель");
+function check()
+{
+    var check=document.getElementsByTagName('input');
+    for(var i=0;i<check.length;i++)
+    {
+        if(check[i].type==='checkbox')
+        {
+            check[i].checked=true;
         }
-    })
-});
+    }
+}
+
+function uncheck()
+{
+    var uncheck=document.getElementsByTagName('input');
+    for(var i=0;i<uncheck.length;i++)
+    {
+        if(uncheck[i].type==='checkbox')
+        {
+            uncheck[i].checked=false;
+        }
+    }
+}
 
 
 $(function() {
-    $( "#delbtn" ).on( "click", function() {
+    $( "#delete-msg-button" ).on( "click", function() {
         var selectedItems = new Array();
         $("input:checkbox:checked").each(function () {
             selectedItems.push($(this).attr('id'));
@@ -26,3 +42,4 @@ $(function() {
         });
     });
 });
+
