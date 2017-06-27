@@ -2,6 +2,7 @@
 
 use yii\widgets\ActiveForm;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 ?>
 
@@ -34,12 +35,13 @@ use yii\helpers\Html;
         ]);
 
         echo '<div class="form-group">';
-            echo Html::button('Написать письмо', [
-                    'class' => 'btn btn-success',
-                    'id'=> 'newmsg',
-                    'data-toggle' => "modal",
-                ]);
-
+        // $url =  $_SERVER['SERVER_NAME'].Url::toRoute(['mail/new']);
+        // echo $url,'<br>';
+        
+        ?>
+           <!-- <a data-toggle="modal" href=".$url." data-target="#myModal">Click me !</a> -->
+            
+            <?php
             echo Html::submitButton('Удалить выбранные',
                 [
                     'class' => 'btn btn-danger',

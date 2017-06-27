@@ -22,9 +22,6 @@ class MailForm extends ActiveRecord
      {
          return 'Sent';
      }
-//    public $email;
-//    public $subject;
-//    public $message;
 
     public function attributeLabels()
     {
