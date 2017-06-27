@@ -32,7 +32,7 @@ class MailController extends AppController
         		Yii::$app->session->setFlash('error', 'Произошла ошибка');
         	}
         }
-        return $this->render('mailform', compact('mail'));
+        return $this->render('sent', compact('mail'));
     }
 
     //Выборка писем из БД
