@@ -1,3 +1,4 @@
+//Выбрать все чекбоксы
 function check()
 {
     var check=document.getElementsByTagName('input');
@@ -10,6 +11,7 @@ function check()
     }
 }
 
+//Снять все чекбоксы
 function uncheck()
 {
     var uncheck=document.getElementsByTagName('input');
@@ -22,7 +24,7 @@ function uncheck()
     }
 }
 
-
+//Проверка выбранных чекбоксов
 $(function() {
     $( "#delete-msg-button" ).on( "click", function() {
         var selectedItems = new Array();
@@ -42,4 +44,34 @@ $(function() {
         });
     });
 });
+
+//Фильтрация
+jQuery(function ($){
+    $('#filter').on('input', function (){
+        var value = this.value;
+        if( /\d{2,}/.test(value) ){
+            var between = value.split('-');
+            between && filter('date_dep', $.trim(between[0]), $.trim(between[1]));
+        } else {
+            filter('recipient', value);
+
+        }
+    });
+
+
+    function filter(field, min, max){
+        $('.mail-msglist').find('.'+field).each(function (){
+            var match, value = this.innerHTML.toLowerCase();
+            if( min > 0 ){
+                match = max ? (value >= min && value <= max) : (min === value);
+            }
+            else {
+                match = value.indexOf(min.toLowerCase()) > -1;
+            }
+            this.parentNode.style.display = match ? '' : 'none';
+        });
+    }
+});
+
+
 

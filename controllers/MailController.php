@@ -22,7 +22,7 @@ class MailController extends AppController
     public function actionSent()
     {
         $mail = new MailForm();
-        $mail->date_dep = date("Y-m-d H:i:s");
+        $mail->date_dep = date("d.m.Y H:i");
         if ($mail->load(Yii::$app->request->post())) {
             if ($mail->save()) {
                 Yii::$app->mailer->compose()

@@ -36,7 +36,7 @@ use app\models\Sent;
             'options' => ['class' => 'form-horizontal',  'name' => 'delform', 'method' => 'get'],
         ]);
 
-        echo '<div class="form-group">';
+        echo '<div class="form-group buttons-block">';
         ?>
 
         <?php
@@ -109,7 +109,14 @@ use app\models\Sent;
                 'class' => 'btn btn-danger',
                 'id'=> 'delete-msg-button',
             ]);
+        echo ' <div class="col-lg-3 col-md-4 col-sm-5 col-xs-7 search-form">
+            <input type="text" id="filter"  value="" class="form-control search-field" placeholder="Введите email или дату">
+            </div>'
+        ?>
+
+        <?php
         echo '</div>';
+
         echo '<table class="table table-striped mail-msglist" style="margin-top: 20px">';
         echo '<tr>';
         echo '<th class="check-col">';
@@ -124,15 +131,16 @@ use app\models\Sent;
         foreach ($sentmsg as $sentmails) {
             echo '<tr>';
             echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
-            echo '<td>' . $sentmails["recipient"] . '</td>';
-            echo '<td>' . $sentmails["subject"] . '</td>';
-            echo '<td>' . $sentmails["date_dep"] . '</td>';
+            echo '<td class="recipient">', "<a href='Url::to(["letter/show", "id" => $sentmails["id"]])'>". $sentmails["recipient"] . '</a></td>';
+            echo '<td class="subject">' . $sentmails["subject"] . '</td>';
+            echo '<td class="date_dep">' . $sentmails["date_dep"] . '</td>';
             echo '</tr>';
         }
         echo '</table>';
 
         ActiveForm::end();
         ?>
+
     </div>
 </div>
 
