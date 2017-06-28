@@ -128,10 +128,12 @@ use app\models\Sent;
         echo '<th>Дата отправления</th>';
         echo '</tr>';
         $i=1;
+
         foreach ($sentmsg as $sentmails) {
+            $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
             echo '<tr>';
             echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
-            echo '<td class="recipient">', "<a href='Url::to(["letter/show", "id" => $sentmails["id"]])'>". $sentmails["recipient"] . '</a></td>';
+            echo '<td class="recipient">'."<a href=$url>" . $sentmails["recipient"] . '</a></td>';
             echo '<td class="subject">' . $sentmails["subject"] . '</td>';
             echo '<td class="date_dep">' . $sentmails["date_dep"] . '</td>';
             echo '</tr>';

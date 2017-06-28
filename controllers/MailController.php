@@ -8,7 +8,7 @@ use app\models\MailForm;
 use app\models\Sent;
 use yii\web\JsonParser;
 use Yii;
-// use app\models\Sent;
+
 
 class MailController extends AppController
 {
