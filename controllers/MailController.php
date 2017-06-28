@@ -14,11 +14,8 @@ class MailController extends AppController
 {
     public $obj;
     public $ids;
-    //Функционал отправки письма и добавление новых писем в БД
 
-    /**
-     * @return string|\yii\web\Response
-     */
+    //Функционал отправки письма и добавление новых писем в БД
     public function actionSent()
     {
         $mail = new MailForm();
@@ -53,5 +50,32 @@ class MailController extends AppController
         return Yii::$app->db
             ->createCommand($query)
             ->queryAll();
+    }
+
+    public function actionLogin()
+    {
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
+    /**
+     * Logout action.
+     *
+     * @return Response
+     */
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
     }
 }
