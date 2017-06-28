@@ -133,9 +133,9 @@ use app\models\Sent;
             $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
             echo '<tr>';
             echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
-            echo '<td class="recipient">'."<a href=$url>" . $sentmails["recipient"] . '</a></td>';
-            echo '<td class="subject">' . $sentmails["subject"] . '</td>';
-            echo '<td class="date_dep">' . $sentmails["date_dep"] . '</td>';
+            echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $sentmails["recipient"] . '</a></td>';
+            echo '<td class="subject">' . "<a href=$url target='_blank'>" . $sentmails["subject"] . '</td>';
+            echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $sentmails["date_dep"] . '</td>';
             echo '</tr>';
         }
         echo '</table>';
