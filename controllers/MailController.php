@@ -30,9 +30,6 @@ class MailController extends AppController
                     ->send();
                 return $this->refresh();
             }
-//            else {
-//                Yii::$app->session->setFlash('error', 'Произошла ошибка');
-//            }
         }
         $sentmsg = Sent::find()->asArray()->all(); //выборка в масив
         $countsentmsg = Sent::find()->asArray()->count(); //выгрузка кол-ва записей
