@@ -1,0 +1,3 @@
+[submodule "vendor/roopz/yii2-imap"]
+	path = vendor/roopz/yii2-imap
+	url = ../../yiioverflow/yii2-imap.git
