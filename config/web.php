@@ -10,6 +10,16 @@ $config = [
     'bootstrap' => ['log'],
     'language' => 'ru',
     'components' => [
+        'imap' => [
+            'class' => 'roopz\imap\Imap',
+            'connection' => [
+                'imapPath' => '{imap.gmail.com:993/imap/ssl}INBOX',
+                'imapLogin' => 'mailertest.dev@gmail.com',
+                'imapPassword' => 'Test123456',
+                'serverEncoding'=>'encoding', // utf-8 default.
+                'attachmentsDir'=>'/'
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'G_LYDy841Nxz-RxYrgnKg4MTVSFgp7rJ',

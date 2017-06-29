@@ -1,6 +1,8 @@
 <?php
 use yii\helpers\Html;
 use yii\helpers\Url;
+use roopz\imap\Imap;
+use roopz\imap\Mailbox;
 
 $this->title = 'My Yii Application';
 
@@ -16,3 +18,16 @@ $url = Url::toRoute(['site/login']);
         <p><a class="btn btn-lg btn-success" href= <?= $url ?> >Вперед</a></p>
     </div>
 </div>
+<?php
+//$mailbox = yii::$app->imap->connection;
+//$mailbox->searchMailBox(ALL);
+//debug($mailIds);
+////foreach($mailIds as $mailId)
+////{
+////    // Returns Mail contents
+////    $mail = $mailbox->getMail($mailId);
+////    // Returns mail attachements if any or else empty array
+////    $attachment = $mail->getAttachments();
+////}
+////print_r($mailIds);
+?>
