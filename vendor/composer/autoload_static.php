@@ -25,6 +25,10 @@ class ComposerStaticInit0b8bb8b33b38d3c4102685c8b439a600
             'yii\\bootstrap\\' => 14,
             'yii\\' => 4,
         ),
+        'r' => 
+        array (
+            'roopz\\imap\\' => 11,
+        ),
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
@@ -103,6 +107,10 @@ class ComposerStaticInit0b8bb8b33b38d3c4102685c8b439a600
         'yii\\' => 
         array (
             0 => __DIR__ . '/..' . '/yiisoft/yii2',
+        ),
+        'roopz\\imap\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/roopz/yii2-imap/src',
         ),
         'phpDocumentor\\Reflection\\' => 
         array (

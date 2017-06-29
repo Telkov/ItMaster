@@ -48,4 +48,13 @@ return array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
     ),
   ),
+  'roopz/yii2-imap' => 
+  array (
+    'name' => 'roopz/yii2-imap',
+    'version' => '9999999-dev',
+    'alias' => 
+    array (
+      '@roopz/imap' => $vendorDir . '/roopz/yii2-imap/src',
+    ),
+  ),
 );
