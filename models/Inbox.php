@@ -21,9 +21,10 @@ class Inbox extends Model
             $subject = strip_tags($mailHeader->subject);
             $date = $mailHeader->date;
             $body = imap_body($inbox, $i);
-//            $allmails[] = array($mailHeader, $from, $subject, $date, $body);
-            echo $from, '<br>';
+            $allmails[] = array('from' => $from, 'subject' => $subject, 'date' => $date);
+
         }
+        debug ($allmails);
 
         imap_close($inbox);
 //        debug($allmails);

@@ -57,7 +57,7 @@ class MailController extends AppController
         $user = 'mailertest.dev@gmail.com';
         $pass = 'Test123456';
         $inmails = new Inbox();
-        return $all = $inmails->getMail($host, $user, $pass);
+        $inmails->getMail($host, $user, $pass);
 //        debug($all);
     }
 
