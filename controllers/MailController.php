@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\DeleteId;
+use app\models\Inbox;
 use app\models\Prepare;
 use app\models\MailForm;
 use app\models\Sent;
@@ -14,6 +15,7 @@ class MailController extends AppController
 {
     public $obj;
     public $ids;
+
 
     //Функционал отправки письма и добавление новых писем в БД
     public function actionSent()
@@ -49,4 +51,14 @@ class MailController extends AppController
             ->createCommand($query)
             ->queryAll();
     }
+    public function actionInbox()
+    {
+        $host = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
+        $user = 'mailertest.dev@gmail.com';
+        $pass = 'Test123456';
+        $inmails = new Inbox();
+        return $all = $inmails->getMail($host, $user, $pass);
+//        debug($all);
+    }
+
 }

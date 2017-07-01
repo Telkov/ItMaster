@@ -9,23 +9,23 @@ use app\models\Sent;
 
 <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-        <div class="mail-sidebar">
-            <div class="mail-sidebar__tab">
-                <p>Почта</p>
-            </div>
-            <div class="mail-sidebar__menu">
-                <div class="mail-sidebar__menu_table">
-                    <table cellspacing="0">
-                        <tr>
-                            <td><a href="">Входящие</a></td><td>##</td>
-                        </tr>
-                        <tr>
-                            <td><a href="">Отправленные</td><td><?= $countsentmsg ?></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+<!--        <div class="mail-sidebar">-->
+<!--            <div class="mail-sidebar__tab">-->
+<!--                <p>Почта</p>-->
+<!--            </div>-->
+<!--            <div class="mail-sidebar__menu">-->
+<!--                <div class="mail-sidebar__menu_table">-->
+<!--                    <table cellspacing="0">-->
+<!--                        <tr>-->
+<!--                            <td><a href="">Входящие</a></td><td>##</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <td><a href="">Отправленные</td><td>--><?//= $countsentmsg ?><!--</td>-->
+<!--                        </tr>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
     </div>
 
     <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 msgs-table">
