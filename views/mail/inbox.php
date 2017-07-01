@@ -52,7 +52,6 @@ use app\models\Sent;
             ],
         ]);
         ?>
-        <div class="container-fluid modal-form">
             <?php
             if(Yii::$app->session->hasFlash('succes')):
                 ?>
@@ -70,38 +69,6 @@ use app\models\Sent;
                     <?= Yii::$app->session->getFlash('error'); ?>
                 </div>
             <?php endif; ?>
-
-<!--            //Модальное окно-->
-            <?php
-            $mform = ActiveForm::begin([
-                'id' => 'mail-form',
-                'options' => ['class' => 'form-horizontal'],
-                'fieldConfig' => [
-                    'template' => '<div class="form-group">
-                                {label}
-                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                    {input}
-                                </div>
-                                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-                                    {error}
-                                </div>
-                            </div>',
-                    'labelOptions' => ['class' => 'col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label'],
-                ],
-            ]);
-            ?>
-            <?= $mform->field($mail, 'recipient')->input('email', ['placeholder' => 'Введите email получателя']); ?>
-            <?= $mform->field($mail, 'subject')->input('string',['placeholder' => 'Введите тему письма']); ?>
-            <?= $mform->field($mail, 'message')->textarea(['rows' => 7, 'placeholder' => 'Введите текст сообщения']); ?>
-            <div class="form-group" align="right">
-                <div>
-                    <?= Html::submitButton('Отправить', ['class' => 'btn btn-success']) ?>
-                </div>
-            </div>
-
-            <?php ActiveForm::end() ?>
-        </div>
-        <?php Modal::end()?>
 
         <?php
         echo Html::submitButton('Удалить выбранные',
@@ -129,21 +96,23 @@ use app\models\Sent;
         echo '</tr>';
         $i=1;
 
-        foreach ($sentmsg as $sentmails) {
-            $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
-            echo '<tr>';
-            echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
-            echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $sentmails["recipient"] . '</a></td>';
-            echo '<td class="subject">' . "<a href=$url target='_blank'>" . $sentmails["subject"] . '</td>';
-            echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $sentmails["date_dep"] . '</td>';
-            echo '</tr>';
-        }
-        echo '</table>';
+//        foreach ($allinbox as $allin) {
+//            foreach ($allin as $k => $v){
+//
+//            }
+//            $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
+//            echo '<tr>';
+//            echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
+//            echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $sentmails["recipient"] . '</a></td>';
+//            echo '<td class="subject">' . "<a href=$url target='_blank'>" . $sentmails["subject"] . '</td>';
+//            echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $sentmails["date_dep"] . '</td>';
+//            echo '</tr>';
+//        }
+//        echo '</table>';
 
-        ActiveForm::end();
+//        ActiveForm::end();
         ?>
 
-    </div>
 </div>
 
 

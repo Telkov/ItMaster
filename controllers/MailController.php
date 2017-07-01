@@ -15,7 +15,6 @@ class MailController extends AppController
 {
     public $obj;
     public $ids;
-    public $inmails;
 
 
     //Функционал отправки письма и добавление новых писем в БД
@@ -58,9 +57,14 @@ class MailController extends AppController
         $user = 'mailertest.dev@gmail.com';
         $pass = 'Test123456';
         $inmails = new Inbox();
-        $inmails->getMail($host, $user, $pass);
+        $allinbox =  $inmails->getMail($host, $user, $pass); //получаем все входящие письма в виде массива
+        debug($allinbox);
+        return $this->render('inbox', ['allinbox' => $allinbox]);
+    }
 
-        debug($inmails);
+    public function actionDelin()
+    {
+
     }
 
 }
