@@ -39,19 +39,6 @@ use app\models\Sent;
         echo '<div class="form-group buttons-block">';
         ?>
 
-        <?php
-        Modal::begin([
-            'id' => 'myModal',
-            'header' => '<p style="text-align: center">Новое сообщение</p>',
-            'size' => 'modal-lg',
-            'toggleButton' => [
-                'label' => 'Написать письмо',
-                'tag' => 'button',
-                'class' => 'btn btn-success',
-                'id' => 'new-msg-button'
-            ],
-        ]);
-        ?>
             <?php
             if(Yii::$app->session->hasFlash('succes')):
                 ?>
@@ -96,25 +83,24 @@ use app\models\Sent;
         echo '</tr>';
         $i=1;
 
-//        foreach ($allinbox as $allin) {
-//            foreach ($allin as $k => $v){
-//
-//            }
-//            $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
-//            echo '<tr>';
-//            echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
-//            echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $sentmails["recipient"] . '</a></td>';
-//            echo '<td class="subject">' . "<a href=$url target='_blank'>" . $sentmails["subject"] . '</td>';
-//            echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $sentmails["date_dep"] . '</td>';
-//            echo '</tr>';
-//        }
-//        echo '</table>';
+        foreach ($allinbox as $allin) {
+            foreach ($allin as $k => $v) {
 
-//        ActiveForm::end();
+
+//            $url = Url::toRoute(['letter/show', 'id' => $allinbox['id']]);
+                $url = "#";
+                echo '<tr>';
+                echo '<td>' . Html::checkbox('cbox', false, ['id' => $v["id"], 'value' => $i++, 'class' => 'check-col']) . '</td>';
+                echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $v["from"] . '</a></td>';
+                echo '<td class="subject">' . "<a href=$url target='_blank'>" . $v["subject"] . '</td>';
+                echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $v["date"] . '</td>';
+                echo '</tr>';
+            }
+        }
+        echo '</table>';
+
+        ActiveForm::end();
         ?>
 
+    </div>
 </div>
-
-
-
-
