@@ -58,7 +58,7 @@ class MailController extends AppController
         $pass = 'Test123456';
         $inmails = new Inbox();
         $allinbox =  $inmails->getMail($host, $user, $pass); //получаем все входящие письма в виде массива
-        debug($allinbox);
+//        debug($allinbox);
         return $this->render('inbox', ['allinbox' => $allinbox]);
     }
 

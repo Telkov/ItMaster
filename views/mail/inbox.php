@@ -77,28 +77,21 @@ use app\models\Sent;
         echo '<input type="button" class="btn check-btn" value="+" onclick="check();">&nbsp;';
         echo '<input type="button" class="btn check-btn" value="-" onclick="uncheck();">';
         echo '</th>';
-        echo '<th>Получатель</th>';
+        echo '<th>Отправитель</th>';
         echo '<th>Тема письма</th>';
         echo '<th>Дата отправления</th>';
         echo '</tr>';
         $i=1;
 
-        foreach ($allinbox as $allin) {
-            foreach ($allin as $k => $v) {
-
-
-//            $url = Url::toRoute(['letter/show', 'id' => $allinbox['id']]);
-                $url = "#";
-                echo '<tr>';
-                echo '<td>' . Html::checkbox('cbox', false, ['id' => $v["id"], 'value' => $i++, 'class' => 'check-col']) . '</td>';
-                echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $v["from"] . '</a></td>';
-                echo '<td class="subject">' . "<a href=$url target='_blank'>" . $v["subject"] . '</td>';
-                echo '<td class="date_dep">' . "<a href=$url target='_blank'>" . $v["date"] . '</td>';
-                echo '</tr>';
-            }
-        }
-        echo '</table>';
-
+       foreach($allinbox as $array){
+           $url = Url::toRoute(['letter/show', 'id' => $array['id']]);
+           echo '<tr>';
+           echo '<td>' . Html::checkbox('cbox', false, ['id' => $array['id'], 'value' => $i++, 'class' => 'check-col']) . '</td>';
+           echo '<td>' . "<a href=$url target='_blank'>" . $array['from'] . '</td>';
+           echo '<td>' . "<a href=$url target='_blank'>" . $array['subject'] . '</td>';
+           echo '<td>' . "<a href=$url target='_blank'>" .$array['date'] . '</td>';
+           echo '</tr>';
+       }
         ActiveForm::end();
         ?>
 

@@ -22,11 +22,9 @@ class Inbox extends Model
             $date = $mailHeader->date;
             $body = imap_body($inbox, $i);
             $allmails[] = array('id' => $i, 'from' => $from, 'subject' => $subject, 'date' => $date, 'body' => $body);
-
         }
 
         imap_close($inbox);
-//        debug($this->allmails);
         return $allmails;
     }
 }
