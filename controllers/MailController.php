@@ -51,6 +51,8 @@ class MailController extends AppController
             ->createCommand($query)
             ->queryAll();
     }
+
+    //Вывод входящих
     public function actionInbox()
     {
         $host = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
@@ -64,7 +66,12 @@ class MailController extends AppController
 
     public function actionDelin()
     {
-
+        $host = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
+        $user = 'mailertest.dev@gmail.com';
+        $pass = 'Test123456';
+        $listmails = 1;
+        $delmails = new Inbox();
+        $delmails->delMail($host, $user, $pass, $list);
     }
 
 }

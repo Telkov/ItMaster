@@ -6,7 +6,10 @@ use yii\helpers\Url;
 use yii\bootstrap\Modal;
 use app\models\Sent;
 ?>
-
+<?php
+$inboxurl = Url::toRoute(['mail/inbox']);
+$senturl = Url::toRoute(['mail/sent']);
+?>
 <div class="row">
     <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
         <div class="mail-sidebar">
@@ -17,10 +20,10 @@ use app\models\Sent;
                 <div class="mail-sidebar__menu_table">
                     <table cellspacing="0">
                         <tr>
-                            <td><a href="">Входящие</a></td><td>##</td>
+                            <td><a href=<?= $inboxurl?> >Входящие</a></td><td>##</td>
                         </tr>
                         <tr>
-                            <td><a href="">Отправленные</td><td><?= $countsentmsg ?></td>
+                            <td><a href=<?= $senturl ?> >Отправленные</td><td><?= $countsentmsg ?></td>
                         </tr>
                     </table>
                 </div>

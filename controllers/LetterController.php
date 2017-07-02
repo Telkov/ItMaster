@@ -8,15 +8,34 @@ class LetterController extends AppController
 {
     public function actionSent()
     {
+        //выбираем строку из базы по переданному ссылкой id
         $id = Yii::$app->request->get('id');
         $letter = Sent::find()->asArray()->where(['id'=> $id])->all();
-        return $this ->render('letter', compact('letter'));
+        foreach ($letter as $let){
+            $date = $let['date_dep'];
+            $email = '<b>Получатель: </b>' . $let['recipient'];
+            $subject = '<b>Тема письма: </b>' . $let['subject'];
+            $body = $let['message'];
+        }
+        return $this ->render('letter', compact('date', 'email', 'subject', 'body'));
     }
 
     public function actionInbox()
     {
-//        $id = Yii::$app->request->get('id');
-//        $letter = Inbox::find()->asArray()->where(['id'=> $id])->all();
-//        return $this ->render('letter', compact('letter'));
+        $uid = Yii::$app->request->get('uid');
+        $arr = Yii::$app->request->get('arr');
+
+        foreach ($arr as $key => $value){
+            foreach ($value as $k => $v){
+                if($uid == $v){
+                    $res = $key;
+                }
+            }
+        }
+        $date = $arr[$res]['date'];
+        $email = '<b>Отправитель: </b>' . $arr[$res]['from'];
+        $subject = '<b> Тема письма: </b>' . $arr[$res]['subject'];
+        $body = $arr[$res]['body'];
+        return $this ->render('letter', compact('date', 'email', 'subject', 'body'));
     }
 }
