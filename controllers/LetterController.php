@@ -15,8 +15,8 @@ class LetterController extends AppController
 
     public function actionInbox()
     {
-        $id = Yii::$app->request->get('id');
-        $letter = Inbox::find()->asArray()->where(['id'=> $id])->all();
-        return $this ->render('letter', compact('letter'));
+//        $id = Yii::$app->request->get('id');
+//        $letter = Inbox::find()->asArray()->where(['id'=> $id])->all();
+//        return $this ->render('letter', compact('letter'));
     }
 }
