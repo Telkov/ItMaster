@@ -130,7 +130,7 @@ use app\models\Sent;
         $i=1;
 
         foreach ($sentmsg as $sentmails) {
-            $url = Url::toRoute(['letter/show', 'id' => $sentmails['id']]);
+            $url = Url::toRoute(['letter/sent', 'id' => $sentmails['id']]);
             echo '<tr>';
             echo '<td>' . Html::checkbox('cbox', false, ['id' => $sentmails["id"], 'value'=> $i++, 'class' => 'check-col']) .'</td>';
             echo '<td class="recipient">' . "<a href=$url target='_blank'>" . $sentmails["recipient"] . '</a></td>';
