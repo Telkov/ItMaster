@@ -18,7 +18,7 @@ class MailController extends AppController
 
 
     //Функционал отправки письма и добавление новых писем в БД
-    public function actionSent()
+    public function actionSec()
     {
         $mail = new MailForm();
         $mail->date_dep = date("d.m.Y H:i");
@@ -33,9 +33,15 @@ class MailController extends AppController
                 return $this->refresh();
             }
         }
-        $sentmsg = Sent::find()->asArray()->all(); //выборка в масив
-        $countsentmsg = Sent::find()->asArray()->count(); //выгрузка кол-ва записей
-        return $this->render('sent', ['mail' => $mail, 'sentmsg' => $sentmsg, 'countsentmsg'=> $countsentmsg]);
+
+        return $this->render('secondary', ['mail' => $mail]);
+
+//        return $this->render('sent', ['mail' => $mail, 'sentmsg' => $sentmsg, 'countsentmsg'=> $countsentmsg]);
+    }
+
+    public function actionSent(){
+        $sentmsg = Sent::find()->asArray()->all(); //выборка в массив
+        return $this->render('sent',  ['sentmsg' => $sentmsg]);
     }
 
     //Удаление писем

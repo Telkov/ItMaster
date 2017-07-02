@@ -2,7 +2,7 @@
     margin: 20px;
 }
 .mail-sidebar{
-    margin-top: 29px;
+    margin-top: -24px;
 }
 .mail-sidebar__tab{
     border-bottom: 25px solid #ECEDE8;
@@ -76,6 +76,7 @@
     position: absolute;
     left: 230px;
     max-width: 80%;
+    margin-top: -20px;
 }
 .check-btn{
     background-color: #ECEDE8;
@@ -93,4 +94,10 @@
 .table-message-view > tbody > tr > td{
     border-bottom: 1px solid #ddd;
     border-top: 0px solid #ddd;
+}
+.footer{
+    margin-bottom: 0;
+}
+.form-group.buttons-block{
+    margin-left: 230px;
 }
