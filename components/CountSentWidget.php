@@ -5,7 +5,7 @@ namespace app\components;
 use yii\base\Widget;
 use app\models\Sent;
 
-class CountsWidget extends Widget
+class CountSentWidget extends Widget
 {
     public function init()
     {

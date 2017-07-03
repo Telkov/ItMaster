@@ -8,10 +8,15 @@ use yii\base\Model;
 class Inbox extends Model
 {
     public $allmails;
+    public $countinboxmsg;
 
-    public function getMail($hostname, $username, $password)
+    protected $hostname = '{imap.gmail.com:993/imap/ssl/novalidate-cert}INBOX';
+    protected $username = 'mailertest.dev@gmail.com';
+    protected $password = 'Test123456';
+
+    public function getMail()
     {
-        $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to gmail: ' . imap_last_error());
+        $inbox = imap_open($this->hostname, $this->username, $this->password) or die('Cannot connect to gmail: ' . imap_last_error());
         $headers = imap_headers($inbox) or die('Could not get emails');
         $numEmails = sizeof($headers);
 
@@ -43,8 +48,8 @@ class Inbox extends Model
             //формируем массив из нужных нам элементов для последующей обработки
             $allmails[] = array('id' => $i, 'from' => $from, 'subject' => $subject, 'date' => $date, 'body' => $body, 'msgno' => $msgno, 'uid' =>'uid-'.$uid);
         }
-
         imap_close($inbox);
+
         return $allmails;
     }
 

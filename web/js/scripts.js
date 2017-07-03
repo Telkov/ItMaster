@@ -51,10 +51,9 @@ jQuery(function ($){
         var value = this.value;
         if( /\d{2,}/.test(value) ){
             var between = value.split('-');
-            between && filter('date_dep', $.trim(between[0]), $.trim(between[1]));
+            between && filter('date', $.trim(between[0]), $.trim(between[1]));
         } else {
-            filter('recipient', value);
-
+            filter('email', value);
         }
     });
 
