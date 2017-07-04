@@ -57,7 +57,6 @@ jQuery(function ($){
         }
     });
 
-
     function filter(field, min, max){
         $('.mail-msglist').find('.'+field).each(function (){
             var match, value = this.innerHTML.toLowerCase();

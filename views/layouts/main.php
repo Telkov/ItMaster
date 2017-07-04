@@ -8,6 +8,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
+use app\components\FormWidget;
 
 AppAsset::register($this);
 ?>
@@ -37,6 +38,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => 'New Mail', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#myModal']],
             ['label' => 'Home', 'url' => ['/site/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
@@ -71,6 +73,7 @@ AppAsset::register($this);
     </div>
 </footer>
 
+<?= FormWidget::widget([]) ?>
 <?php $this->endBody() ?>
 </body>
 </html>

@@ -15,29 +15,24 @@ class MailController extends AppController
     public $obj;
     public $ids;
 
-    //Функционал отправки письма и добавление новых писем в БД
+    //Функционал отправки письма и добавление новых писем в БД перенесен в виджет, см. components
+
+    //Выборка писем из БД для построения таблицы отправленых писем
     public function actionSent()
     {
-        $mail = new MailForm();
-        $mail->date_dep = date("d.m.Y H:i");
-        if ($mail->load(Yii::$app->request->post())) {
-            if ($mail->save()) {
-                Yii::$app->mailer->compose()
-                    ->setFrom(['mailertest.dev@gmail.com' => 'ItMAster TEST'])
-                    ->setTo($mail->recipient)
-                    ->setSubject($mail->subject)
-                    ->setTextBody($mail->message)
-                    ->send();
-
-                return $this->refresh();
-            }
-        }
-
-        return $this->render('sent', ['mail' => $mail]);
-
+        $sentmsg = Sent::find()->asArray()->all(); //выборка в массив
+        return $this->render('sent',  ['sentmsg' => $sentmsg]);
     }
 
-    //Удаление писем
+    public function actionInbox()
+    {
+        $inmails = new Inbox();
+        $allinbox =  $inmails->getMail(); //получаем все входящие письма в виде массива
+
+        return $this->render('inbox', ['allinbox' => $allinbox]);
+    }
+
+    //Удаление отправленых писем
     public function actionDelete()
     {
         if (Yii::$app->request->isAjax) {
