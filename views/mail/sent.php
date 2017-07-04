@@ -23,10 +23,10 @@ $senturl = Url::toRoute(['mail/sent']);
                 <div class="mail-sidebar__menu_table">
                     <table cellspacing="0">
                         <tr>
-                            <td><?= Html::button('Входящие',['class => btn-href', 'onclick' => '(function ( $event ) { alert("Button 1 clicked"); })();'])  ?></td><td><?= CountInboxWidget::widget(); ?></td>
+                            <td><a href= <?= $inboxurl ?> >Входящие</a></td><td><?= CountInboxWidget::widget(); ?></td>
                         </tr>
                         <tr>
-                            <td><?= Html::button('Отправленные',['class => btn-href', 'onclick' => '(function ( $event ) { alert("Button 2 clicked"); })();'])  ?></td><td><?= CountSentWidget::widget(); ?></td>
+                            <td><a href= <?= $senturl ?> >Отправленные</td><td><?= CountSentWidget::widget(); ?></td>
                         </tr>
                     </table>
                 </div>
@@ -122,8 +122,10 @@ $senturl = Url::toRoute(['mail/sent']);
 
         <?php
 
-        echo $mailwidget;
-        //            echo $widget;
+        echo SentWidget::widget();
+
+        echo InboxWidget::widget();
+//            echo $widget;
             ActiveForm::end();
         ?>
 
