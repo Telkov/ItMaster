@@ -52,7 +52,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'New Mail', 'url' => '#', 'options' => ['data-toggle' => 'modal', 'data-target' => '#myModal']],
+            ['label' => 'My CV', 'url' => ['/site/cv']],
             ['label' => 'Home', 'url' => ['/site/index']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]

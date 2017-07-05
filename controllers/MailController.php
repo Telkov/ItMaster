@@ -56,4 +56,5 @@ class MailController extends AppController
         $delmails = new Inbox();
         $delmails->delMail($host, $user, $pass, $list);
     }
+
 }

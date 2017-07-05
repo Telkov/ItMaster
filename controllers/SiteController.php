@@ -96,4 +96,9 @@ class SiteController extends AppController
         return $this->goHome();
     }
 
+    public function actionCv()
+    {
+        return $this->render('cv');
+    }
+
 }

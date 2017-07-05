@@ -1,3 +1,4 @@
-<object data="files/cv.pdf" type="application/pdf" width="90%" height="450px">
-    <a href="files/cv.pdf">Download PDF file</a>
-</object>
+<div class="container cv">
+   <iframe src="https://drive.google.com/file/d/0B2BeLzt9_zSgSGdYZzZweUZkQVE/preview" width="640" height="100%">
+   </iframe>
+</div>
