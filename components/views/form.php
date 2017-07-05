@@ -7,32 +7,35 @@ $inboxurl = Url::toRoute(['mail/inbox']);
 $senturl = Url::toRoute(['mail/sent']);
 ?>
 
-<?php if (Yii::$app->session->hasFlash('contactFormSubmitted')) { ?>
+<?php if (Yii::$app->session->hasFlash('FormSubmitted')) { ?>
 
-    <?php
+<?php
     $this->registerJs(
-        "$('#myModalSendOk').modal('show');",
+        "$('#myModalSendOk').modal('show');
+        var url = window.location.href;
+        window.location.href = url;
+        ",
         yii\web\View::POS_READY
     );
-    ?>
+?>
 
-    <!-- Modal -->
-    <div class="modal fade" id="myModalSendOk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" align="center">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                    <h5 class="modal-title" id="myModalLabel">Отчет об отправке</h5>
-                </div>
-                <div class="modal-body">
-                    <p>Ваше сообщение отправлено успешно!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+<!-- Modal -->
+<div class="modal fade" id="myModalSendOk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header" align="center">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h5 class="modal-title" id="myModalLabel">Страница будет автоматически перезагружена через 1 сек.</h5>
+            </div>
+            <div class="modal-body">
+                <p>Ваше сообщение отправлено успешно!</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
 <?php } ?>
 

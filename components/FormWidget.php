@@ -21,7 +21,7 @@ class FormWidget extends Widget
                     ->setTextBody($mail->message)
                     ->send();
 
-                Yii::$app->session->setFlash('contactFormSubmitted');
+                Yii::$app->session->setFlash('FormSubmitted');
             }
         }
 
