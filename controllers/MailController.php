@@ -2,7 +2,6 @@
 
 namespace app\controllers;
 
-use app\models\DeleteId;
 use app\models\Inbox;
 use app\models\Prepare;
 use app\models\MailForm;
@@ -14,12 +13,6 @@ use Yii;
 class MailController extends AppController
 {
     public $layout = 'second';
-//    public $obj;
-//    public $ids;
-//    public $inboxurl;
-//    public $senturl;
-//    public $pageurl;
-
     //Функционал отправки письма и добавление новых писем в БД перенесен в виджет, см. components
 
     //Выборка писем из БД для построения таблицы отправленых писем
@@ -29,6 +22,7 @@ class MailController extends AppController
         return $this->render('sent',  ['sentmsg' => $sentmsg]);
     }
 
+    //Вывод входящих писем
     public function actionInbox()
     {
         $inmails = new Inbox();
@@ -46,7 +40,6 @@ class MailController extends AppController
 
         if (Yii::$app->request->isAjax) {
             $obj = $_POST['jsonObj'];
-//            $pageurl = $_POST['pageurl'];
         }
         $new = new Prepare(); //приведем строковое значение переменной к нужному виду
         $ids = $new->transform($obj);

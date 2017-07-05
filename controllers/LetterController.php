@@ -9,7 +9,7 @@ class LetterController extends AppController
 {
     public function actionSent()
     {
-        //выбираем строку из базы по переданному ссылкой id
+        //выбираем строку из базы по переданному get запросу
         $id = Yii::$app->request->get('id');
         $letter = Sent::find()->asArray()->where(['id'=> $id])->all();
         foreach ($letter as $let){

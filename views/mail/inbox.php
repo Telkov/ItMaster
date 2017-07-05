@@ -6,6 +6,7 @@ use yii\helpers\Url;
 ?>
 
 <?php
+//выводим таблицу, рисуем шапку
 echo '<table class="table table-striped mail-msglist">';
 echo '<tr>';
 echo '<th class="check-col">';
@@ -17,7 +18,7 @@ echo '<th>Тема письма</th>';
 echo '<th>Дата отправления</th>';
 echo '</tr>';
 $i=1;
-
+//выводим содержимое
 foreach($allinbox as $array){
     $url = Url::toRoute(['letter/inbox', 'uid' => $array['uid'] ]);
     echo '<tr>';

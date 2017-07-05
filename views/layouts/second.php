@@ -1,5 +1,5 @@
 <?php
-
+//второй слой, для контроллера mail
 /* @var $this \yii\web\View */
 /* @var $content string */
 
@@ -143,7 +143,6 @@ AppAsset::register($this);
 <footer class="footer" style="margin-top:">
     <div class="container">
         <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
-
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
