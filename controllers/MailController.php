@@ -12,6 +12,7 @@ use Yii;
 
 class MailController extends AppController
 {
+    public $layout = 'second';
     public $obj;
     public $ids;
 
