@@ -1,6 +1,7 @@
 <?php
 
 namespace app\controllers;
+use app\models\Inbox;
 use app\models\Sent;
 use Yii;
 
@@ -23,8 +24,9 @@ class LetterController extends AppController
     public function actionInbox()
     {
         $uid = Yii::$app->request->get('uid');
-        $arr = Yii::$app->request->get('arr');
-
+        $inbox = new Inbox();
+        $arr = $inbox->getMail();
+//        debug($arr);
         foreach ($arr as $key => $value){
             foreach ($value as $k => $v){
                 if($uid == $v){

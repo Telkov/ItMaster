@@ -19,7 +19,7 @@ echo '</tr>';
 $i=1;
 
 foreach($allinbox as $array){
-    $url = Url::toRoute(['letter/inbox', 'uid' => $array['uid'], 'arr'=> $allinbox]);
+    $url = Url::toRoute(['letter/inbox', 'uid' => $array['uid'] ]);
     echo '<tr>';
     echo '<td>' . Html::checkbox('cbox', false, ['id' => $array['id'], 'value' => $i++, 'class' => 'check-col']) . '</td>';
     echo '<td class="email">' . "<a href=$url target='_blank'>" . $array['from'] . '</td>';

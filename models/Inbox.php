@@ -19,7 +19,6 @@ class Inbox extends Model
         $inbox = imap_open($this->hostname, $this->username, $this->password) or die('Cannot connect to gmail: ' . imap_last_error());
         $headers = imap_headers($inbox) or die('Could not get emails');
         $numEmails = sizeof($headers);
-
         //получаем письма
         for ($i = 1; $i < $numEmails + 1; $i++) {
 
@@ -53,9 +52,9 @@ class Inbox extends Model
         return $allmails;
     }
 
-    public function delMail($hostname, $username, $password, $list)
+    public function delMail($list)
     {
-        $inbox = imap_open($hostname, $username, $password) or die('Cannot connect to gmail: ' . imap_last_error());
+        $inbox = imap_open($this->hostname, $this->username, $this->password) or die('Cannot connect to gmail: ' . imap_last_error());
         imap_delete($inbox, $list);
         imap_close($inbox);
     }
