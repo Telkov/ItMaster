@@ -76,8 +76,6 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
 
-
-
         <div class="row">
             <?php
             $msg = ActiveForm::begin([
@@ -118,10 +116,10 @@ AppAsset::register($this);
                         <div class="mail-sidebar__menu_table">
                             <table cellspacing="0">
                                 <tr>
-                                    <td><a href= <?= $inboxurl; ?> >Входящие</a></td><td><?= CountInboxWidget::widget(); ?></td>
+                                    <td><a href= <?= $inboxurl; ?> >Входящие</a></td><td><a href= <?= $inboxurl; ?> ><?= CountInboxWidget::widget(); ?></a></td>
                                 </tr>
                                 <tr>
-                                    <td><a href= <?= $senturl; ?> >Отправленные</a></td><td><?= CountSentWidget::widget(); ?></td>
+                                    <td><a href= <?= $senturl; ?>>Отправленные</a></td><td><a href= <?= $senturl; ?> ><?= CountSentWidget::widget(); ?></a></td>
                                 </tr>
                             </table>
                         </div>
@@ -131,13 +129,11 @@ AppAsset::register($this);
 
             <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 msgs-table">
 
-
                 <?= $content ?>
 
             </div>
 
                 <?php ActiveForm::end(); ?>
-
 
         </div>
     </div>
